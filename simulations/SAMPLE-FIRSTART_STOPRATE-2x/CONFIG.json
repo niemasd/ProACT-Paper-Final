@@ -1,0 +1,119 @@
+{
+    # ContactNetworkGenerator
+    "ContactNetworkGenerator": "Communities",
+    "cn_generators": [{"ContactNetworkGenerator":"BarabasiAlbert", "num_cn_nodes":5000, "num_edges_from_new":5}]*20, # expected degree within = 5*2 = 10
+    "cn_p_across": 1/(2*19*5000), # expected degree across = 1 = 2*19*5000*p
+
+    # NodeEvolution
+    "NodeEvolution": "VirusTreeSimulator",
+    "vts_growthRate": 2.851904, # from PANGEA
+    "vts_max_attempts": 100,
+    "vts_model": "logistic", # from PANGEA
+    "vts_n0": 1, # from PANGEA
+    "vts_t50": -2, # from PANGEA
+
+    # NumBranchSample
+    "NumBranchSample": "Single",
+
+    # NumTimeSample
+    "NumTimeSample": "Once",
+
+    # SeedSelection
+    "SeedSelection": "Random",
+    "num_seeds": 15000,
+
+    # SeedSequence
+    "SeedSequence": "VirusNonHomYuleHeightGTRGamma",
+    "seed_height": 25,
+    "seed_speciation_rate_func": "exp(-t**2)+1",
+    "viral_sequence_type": "HIV1-B-DNA-POL-LITTLE",
+    "seqgen_freq_a": 0.392,
+    "seqgen_freq_c": 0.165,
+    "seqgen_freq_g": 0.212,
+    "seqgen_freq_t": 0.232,
+    "seqgen_a_to_c": 1.765707,
+    "seqgen_a_to_g": 9.587649,
+    "seqgen_a_to_t": 0.691915,
+    "seqgen_c_to_g": 0.863348,
+    "seqgen_c_to_t": 10.282617,
+    "seqgen_g_to_t": 1.0,
+    "seqgen_gamma_shape": 0.405129,
+    "seqgen_num_gamma_rate_categories": "",
+
+    # SequenceEvolution
+    "SequenceEvolution": "GTRGammaSeqGen",
+
+    # Sequencing
+    "Sequencing": "Perfect",
+
+    # SourceSample
+    "SourceSample": "Random",
+
+    # TimeSample
+    "TimeSample": "GranichFirstART",
+
+    # TransmissionTimeSample
+    "TransmissionTimeSample": "HIVARTGranichGEMF", # AU = i1, CU = i2, AT = a1, CT = a2
+    "end_time": 10,
+    "hiv_freq_ns": 0, "hiv_freq_i3": 0, "hiv_freq_i4": 0, "hiv_freq_a3": 0, "hiv_freq_a4": 0, "hiv_freq_d": 0,
+    "hiv_freq_s": 100000-15000, # S = total - seeds
+    "hiv_freq_i1": 50, # AU = 0.0033*seeds
+    "hiv_freq_i2": 5094, # CU = 0.3396*seeds
+    "hiv_freq_a1": 9, # AT = 0.0006*seeds
+    "hiv_freq_a2": 15000 - 50 - 5094 - 9, # CT = seeds - AU - CU - AT
+    "hiv_a1_to_a2": 4.333333333333333,
+    "hiv_a1_to_d": 0,
+    "hiv_a1_to_i1": 0.96,
+    "hiv_a2_to_a3": 0,
+    "hiv_a2_to_d": 0,
+    "hiv_a2_to_i2": 0.96,
+    "hiv_a3_to_a4": 0,
+    "hiv_a3_to_d": 0,
+    "hiv_a3_to_i3": 0,
+    "hiv_a4_to_d": 0,
+    "hiv_a4_to_i4": 0,
+    "hiv_i1_to_a1": 1.0,
+    "hiv_i1_to_d": 0,
+    "hiv_i1_to_i2": 8.666666666666666,
+    "hiv_i2_to_a2": 1.0,
+    "hiv_i2_to_d": 0,
+    "hiv_i2_to_i3": 0,
+    "hiv_i3_to_a3": 0,
+    "hiv_i3_to_d": 0,
+    "hiv_i3_to_i4": 0,
+    "hiv_i4_to_a4": 0,
+    "hiv_i4_to_d": 0,
+    "hiv_ns_to_d": 0,
+    "hiv_ns_to_s": 999999,
+    "hiv_s_to_d": 0,
+    "hiv_s_to_i1_by_a1": 0.005625,
+    "hiv_s_to_i1_by_a2": 0,
+    "hiv_s_to_i1_by_a3": 0,
+    "hiv_s_to_i1_by_a4": 0,
+    "hiv_s_to_i1_by_i1": 0.1125,
+    "hiv_s_to_i1_by_i2": 0.0225,
+    "hiv_s_to_i1_by_i3": 0,
+    "hiv_s_to_i1_by_i4": 0,
+    "hiv_s_to_i1_seed": 0,
+
+    # TreeUnit
+    "TreeUnit": "TruncatedNormal",
+    "tree_rate_loc": 0.0008,
+    "tree_rate_max": float('inf'),
+    "tree_rate_min": 0,
+    "tree_rate_scale": 0.0005,
+
+    # things not to modify
+    "ContactNetwork": "NetworkX",
+    "Driver": "Default",
+    "EndCriteria": "GEMF",
+    "Logging": "File",
+    "NodeAvailability": "Perfect",
+    "TransmissionNodeSample": "GEMF",
+    "TreeNode": "Simple",
+    "gemf_path": "GEMF",
+    "hmmemit_path": "hmmemit",
+    "java_path": "java",
+    "out_dir": "FAVITES_output",
+    "seqgen_path": "seq-gen",
+}
