@@ -70,10 +70,12 @@ for l in args.contacts:
             neighbors[u] = set()
         if v not in neighbors:
             neighbors[v] = set()
-        if u in user_individuals_set:
-            neighbors[v].add(u)
-        if v in user_individuals_set:
-            neighbors[u].add(v)
+        neighbors[u].add(v); neighbors[v].add(u)
+        # below is if we don't want to count unsampled neighbos
+        #if u in user_individuals_set:
+        #    neighbors[v].add(u)
+        #if v in user_individuals_set:
+        #    neighbors[u].add(v)
     else:
         raise RuntimeError("Invalid contact network")
 
