@@ -79,12 +79,16 @@ for l in args.contacts:
     else:
         raise RuntimeError("Invalid contact network")
 
-# compute total number infected by neighbors
-num_infected_by_neighbors = {u:0 for u in user_individuals}
+# compute total number of people infected by each person
+num_infected = {u:0 for u in neighbors}
 for u,v,t in trans:
-    if t >= args.from_time and t <= args.to_time and u in num_infected_by_neighbors:
-        for neighbor in neighbors[u]:
-            if neighbor in user_individuals_set:
-                num_infected_by_neighbors[neighbor] += 1
+    if u not in num_infected:
+        num_infected[u] = 0
+    if v not in num_infected:
+        num_infected[v] = 0
+    if t >= args.from_time and t <= args.to_time:
+        num_infected[u] += 1
+
+# compute total number infected by neighbors
 for u in user_individuals:
-    print("%s\t%d" % (u,num_infected_by_neighbors[u]))
+    print("%s\t%d" % (u, sum(num_infected[v] for v in neighbors[u])))
